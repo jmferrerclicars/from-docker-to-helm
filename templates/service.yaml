@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: tetris
+  name: tetris
+spec:
+  ports:
+    - name: tetris
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+  selector:
+    app: tetris
