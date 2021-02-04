@@ -27,9 +27,17 @@ kubectl delete -f templates/service.yaml
 kubectl delete -f templates/ingress.yaml
 ```
 
+How to link a service to a deployment: https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/
+
 ## Helm chart
 ```
 helm upgrade --install tetris .
 kubectl get all
 kubectl get ingress
+```
+
+## Parametrize helm chart
+
+```
+git checkout replicas
 ```
