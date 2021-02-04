@@ -33,3 +33,20 @@ helm upgrade --install tetris .
 kubectl get all
 kubectl get ingress
 ```
+
+## Modify chart
+
+Take a look to *templates/deployment.yaml* where *{{ .Values.replicas }}* was added.
+
+This value is defined in *values.yaml*.
+
+```
+helm upgrade --install tetris .
+kubectl get po
+```
+
+Redefine replicas:
+```
+helm upgrade --install tetris . --set replicas=5
+```
+
