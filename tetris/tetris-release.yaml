@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: tetris
+  namespace: tetris
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: tetris
+  chart:
+    git: https://github.com/jmferrer/from-docker-to-helm
+    ref: gitops
+    path: charts/tetris
+  values:
+    replicas: 1
