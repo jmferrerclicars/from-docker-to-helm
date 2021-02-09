@@ -63,15 +63,31 @@ helm repo update
 helm repo list
 ```
 
+Pedir flux-ssh-secret.yaml .
+
 Instalamos flux para que monitorice la rama gitops de este repositorio:
 ```
 kubectl create namespace flux
+kubectl apply -f flux-ssh-secret.yaml -n flux
 helm upgrade --install flux fluxcd/flux \
-    --set git.url=https://github.com/jmferrer/from-docker-to-helm.git \
+    --set git.url=git@github.com:jmferrerclicars/from-docker-to-helm.git \
     --set git.branch=gitops \
+    --set git.secretName=flux-ssh \
+    --set git.secretDataKey=identity \
     --set git.pollInterval=1m \
+    --set allowedNamespaces[0]=flux \
+    --set allowedNamespaces[1]=tetris \
     --namespace flux
+```
+
+Instalamos el operador de helm:
+```
 helm upgrade --install helm-operator fluxcd/helm-operator \
     --set helm.versions=v3 \
     --namespace flux
+```
+
+Probamos a cargarnos el namespace tetris:
+```
+kubectl delete namespace tetris
 ```
