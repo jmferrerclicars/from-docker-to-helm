@@ -1,0 +1,51 @@
+= Principios de gitops
+:backend: revealjs
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/
+
+== Sistema descrito de forma declarativa
+
+Permite expresar el estado al que se quiere llegar en vez de como llegar a él.
+
+== Estado deseado versionado en git
+
+Se usa git como fuente de verdad. Los mecanismos que proporciona git permiten cosas hacer rollbacks fácilmente con un `git revert` del entorno de producción.
+
+== Cambios aprobados en git se pueden aplicar automáticamente
+
+El repositorio de git debe coincidir con el estado del entorno siempre.
+
+== Agentes para asegurar que se aplica lo anterior
+
+En caso de que el sistema cambie respecto a git, debe haber un agente que lo devuelva al estado deseado y avise.
+
+== Porqué usar gitops (1)
+
+* Permite hacer Despliegue Continuo real de tus aplicaciones
+
+== Porqué usar gitops (2)
+
+* Permite hacer rollback más fácilmente
+
+== Porqué usar gitops (3)
+
+* Acercar al mundo del desarrollo el mundo de la infraestructura
+
+== Porqué usar gitops (4)
+
+* Despliegues auto documentados en git
+
+== Porqué usar gitops (5)
+
+* El conocimiento del estado se queda en git y a través de los merge requests se distribuye por el equipo
+
+== La idea de gitops (1)
+
+* rama de git con descripción del estado
+
+== La idea de gitops (2)
+
+* cambio en rama implica cambio en infraestructura
+
+== La idea de gitops (2)
+
+* el cambio se hace con un proceso automático
